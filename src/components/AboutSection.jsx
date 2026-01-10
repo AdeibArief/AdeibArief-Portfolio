@@ -2,6 +2,15 @@ import { Briefcase, Code, User } from "lucide-react";
 import React from "react";
 
 const AboutSection = () => {
+  const downloadCV = () => {
+    const link = document.createElement("a");
+    link.href = "src\\assets\\Full stack developer resume-1.pdf"; // Replace with your CV file path
+    link.download = "Adeib_Arief_CV.pdf"; // Name of the downloaded file
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section id="about" className="py-24 px-4 relative">
       <div className="container mx-auto max-w-5xl">
@@ -11,37 +20,32 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold">
-             Full-Stack Web Developer 
-                <br className="mb-2" />
-             (MERN Stack)
+              Full-Stack Web Developer 
+              <br className="mb-2" />
+              (MERN Stack)
             </h3>
-
             <p className="text-muted-foreground">
               I build modern, responsive web applications using the MERN stack,
               focusing on clean UI, scalable backend logic, and real-world
               functionality.
             </p>
-
             <p className="text-muted-foreground">
               I enjoy turning ideas into working products, continuously
               improving my skills, and learning new technologies to stay
               relevant in the fast-evolving web ecosystem.
             </p>
-
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
               <a href="#contact" className="cosmic-button">
                 Get In Touch
               </a>
-
-              <a
-                href=""
+              <button
+                onClick={downloadCV}
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
                 Download CV
-              </a>
+              </button>
             </div>
           </div>
-
           <div className="grid grid-cols-1 gap-6">
             <div className="gradient-border p-6 card-hover">
               <div className="flex items-start gap-4">

@@ -2,23 +2,64 @@ import { Linkedin, Locate, Mail, Send, Twitter } from "lucide-react";
 import React, { useState } from "react";
 import { cn } from "../lib/utils";
 import { useToast } from "../hooks/use-toast";
+import emailjs from "@emailjs/browser";
+
+// Initialize EmailJS (do this once when your app loads, or in this component)
+emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY); // Replace with your EmailJS public key
 
 const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setIsSubmitting(true);
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. i'll get back to you soon",
-      });
-      setIsSubmitting(false);
-    }, 1500);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID, // Replace with your EmailJS service ID
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // Replace with your EmailJS template ID
+        {
+          to_email: "sadeib3@gmail.com", // Your email
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }
+      );
+
+      if (response.status === 200) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for your message. I'll get back to you soon",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+      console.error("EmailJS error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
@@ -54,9 +95,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-medium">Location</h4>
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    Hyderabad,India
-                  </a>
+                  <p className="text-muted-foreground">Hyderabad, India</p>
                 </div>
               </div>
             </div>
@@ -66,19 +105,17 @@ const ContactSection = () => {
                 <a
                   href="https://www.linkedin.com/in/adeib-arief"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <Linkedin />
                 </a>
               </div>
             </div>
           </div>
-          <div
-            className="bg-card rounded-lg shadow-xs p-8"
-            onSubmit={handleSubmit}
-          >
+          <div className="bg-card rounded-lg shadow-xs p-8">
             <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
 
-            <form className="space-y-6 ">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label
                   htmlFor="name"
@@ -90,8 +127,10 @@ const ContactSection = () => {
                   type="text"
                   id="name"
                   name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
               <div>
@@ -105,10 +144,12 @@ const ContactSection = () => {
                   type="email"
                   id="email"
                   name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary"
                 />
-              </div>{" "}
+              </div>
               <div>
                 <label
                   htmlFor="message"
@@ -116,19 +157,21 @@ const ContactSection = () => {
                 >
                   Your message
                 </label>
-                <input
-                  type="text"
+                <textarea
                   id="message"
                   name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 resize-none"
+                  rows="4"
+                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                 />
               </div>
               <button
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2"
+                  "cosmic-button w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 )}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
