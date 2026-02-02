@@ -4,6 +4,16 @@ import React from "react";
 const projects = [
   {
     id: 1,
+    title: "MERN Ecommerce website SALESHORSE",
+    description:
+      "A full-stack ecommerce platform built using the MERN stack. Features product catalog, shopping cart, user authentication, order management, and payment integration for a complete online shopping experience.",
+    image: "/projects/SALESHORSE.png",
+    tags: ["MongoDB", "Express", "React", "Node.js",],
+    demoUrl: "",
+    githubUrl: "#",
+  },
+  {
+    id: 2,
     title: "MERN Chat App",
     description:
       "A real-time chat application built using the MERN stack with user authentication and private messaging. Implements Socket.IO for live communication and focuses on a clean, responsive UI.",
@@ -12,9 +22,8 @@ const projects = [
     demoUrl: "https://mern-stack-chat-app-using-socket-io.onrender.com/",
     githubUrl: "#",
   },
-
   {
-    id: 2,
+    id: 3,
     title: "PERN Stack Product Store",
     description:
       "A full-stack product management application built using the PERN stack. Features CRUD operations, structured REST APIs, and a PostgreSQL-backed database for managing products efficiently.",
@@ -23,9 +32,8 @@ const projects = [
     demoUrl: "",
     githubUrl: "#",
   },
-
   {
-    id: 3,
+    id: 4,
     title: "AI Medical Nutrition Advisor",
     description:
       "An AI-powered application that provides personalized food and nutrition recommendations based on medical data. Uses Python-based machine learning and data analysis techniques to generate health-aware insights.",
