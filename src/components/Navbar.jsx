@@ -13,7 +13,7 @@ const navItems = [
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen,setIsMenuOpened]=useState(false);
+  const [isMenuOpen, setIsMenuOpened] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +27,9 @@ const Navbar = () => {
     <nav
       className={cn(
         "fixed w-full z-40 transition-all duration-300 ",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+        isScrolled
+          ? "py-3 bg-background/80 backdrop-blur-md shadow-xs"
+          : "py-5",
       )}
     >
       <div className="container flex items-center justify-between">
@@ -43,37 +45,44 @@ const Navbar = () => {
 
         {/* Desktop version */}
 
-        <div className="hidden md:flex space-x-8 items-center">
-          {navItems.map((item, key) => (
+        <div className="hidden md:flex items-center gap-4 lg:gap-6">
+          <div className="flex items-center space-x-8">
+            {navItems.map((item, key) => (
+              <a
+                key={key}
+                href={item.href}
+                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+              >
+                {item.name}
+              </a>
+            ))}
+
             <a
-              key={key}
-              href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300"
+              href="src\FSD_RESUME_6.pdf"
+              download="Resume.pdf"
+              className="inline-flex items-center justify-center px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90 transition-colors duration-300 font-medium leading-none"
             >
-              {item.name}
+              Resume
             </a>
-          ))}
-          <a
-            href="src\FSD_RESUME_6.pdf"
-            download="Resume.pdf"
-            className="px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90 transition-colors duration-300 font-medium"
-          >
-            Resume
-          </a>
+          </div>
         </div>
 
         {/* Mobile Number */}
 
-
-        <button onClick={()=>setIsMenuOpened((prev)=>!prev)} className="md:hidden p-2 text-foreground z-50">
-          {isMenuOpen ? <X size={24}/> : <Menu size={24}/>}
+        <button
+          onClick={() => setIsMenuOpened((prev) => !prev)}
+          className="md:hidden p-2 text-foreground z-50"
+        >
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
         <div
           className={cn(
             "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
             "transition-all duration-300 md:hidden",
-            isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+            isMenuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none",
           )}
         >
           <div className="flex flex-col space-y-8 text-xl">
@@ -82,7 +91,7 @@ const Navbar = () => {
                 key={key}
                 href={item.href}
                 className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                onClick={()=>setIsMenuOpened(!isMenuOpen)}
+                onClick={() => setIsMenuOpened(!isMenuOpen)}
               >
                 {item.name}
               </a>

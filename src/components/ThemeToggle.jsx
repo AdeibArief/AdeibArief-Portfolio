@@ -34,8 +34,8 @@ const ThemeToggle = () => {
   return (
     <button
       className={cn(
-        "fixed max-sm:hidden top-5 right-5 z-50 p-3 rounded-full transition-all duration-300",
-        "bg-card shadow-lg hover:scale-110 focus:outline-none",
+        "fixed max-sm:hidden top-1.5 right-1.5 z-50 flex items-center justify-center p-3 m-0 rounded-full transition-all duration-300",
+        "bg-card shadow-lg hover:scale-110 focus:outline-none ring-1 ring-border/60",
         isDarkMode ? "hover:bg-yellow-500/10" : "hover:bg-blue-500/10"
       )}
       onClick={toggleTheme}

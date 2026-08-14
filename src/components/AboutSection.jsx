@@ -4,7 +4,7 @@ import React from "react";
 const AboutSection = () => {
   const downloadCV = () => {
     const link = document.createElement("a");
-    link.href = "Full_stack_developer_resume-1.pdf"; // Replace with your CV file path
+    link.href = "src\\FSD_RESUME_6.pdf"; // Replace with your CV file path
     link.download = "Adeib_Arief_CV.pdf"; // Name of the downloaded file
     document.body.appendChild(link);
     link.click();
