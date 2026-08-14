@@ -98,17 +98,18 @@ const ContactSection = () => {
                   <p className="text-muted-foreground">Hyderabad, India</p>
                 </div>
               </div>
-            </div>
-            <div className="pt-8">
-              <h4 className="font-medium mb-4">Connect with me</h4>
-              <div className="flex space-x-4 justify-center">
-                <a
-                  href="https://www.linkedin.com/in/adeib-arief"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Linkedin />
-                </a>
+              <div className="flex items-start flex-col">
+                <h4 className="font-medium mb-4">Connect with me</h4>
+                <div className="flex space-x-4 items-center justify-center">
+                  <a
+                    href="https://www.linkedin.com/in/adeib-arief"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn border p-2 rounded"
+                  >
+                    <Linkedin />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

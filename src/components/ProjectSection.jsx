@@ -43,6 +43,36 @@ const projects = [
       "https://ai-medical-nutrition-advisor-g2ruvjonaitk8vozwt34ap.streamlit.app/",
     githubUrl: "#",
   },
+  {
+    id: 5,
+    title: "ApplyTrack",
+    description:
+      "A full-stack MERN job application tracker with a companion Chrome Extension published on the Chrome Web Store. Features AI-powered job data extraction, JWT authentication with HTTP-only cookies, automated email flows, and bulk import from LinkedIn, Indeed, Foundit, Wellfound, and Internshala.",
+    image: "/projects/APPLYTRACK.png",
+    tags: ["MongoDB", "Express", "React", "Node.js", "JWT", "Tailwind CSS", "Chrome Extension", "Groq AI"],
+    demoUrl: "https://applytrack-eta.vercel.app",
+    githubUrl: "https://github.com/AdeibArief/applytrack",
+  },
+  {
+    id: 6,
+    title: "DevLens",
+    description:
+      "An AI-powered code review tool with real-time token-by-token streaming via Server-Sent Events. Built in TypeScript with Groq/LLaMA 3.3 integration, JWT authentication, and a responsive UI. Converted from JSX to TSX as part of a TypeScript migration.",
+    image: "/projects/DEVLENS.png",
+    tags: ["React", "TypeScript", "Node.js", "Express", "MongoDB", "Groq API", "SSE", "JWT"],
+    demoUrl: "https://devlens-five.vercel.app/dashboard",
+    githubUrl: "https://github.com/AdeibArief/Devlens",
+  },
+  {
+    id: 7,
+    title: "JobLens",
+    description:
+      "A Chrome extension that enhances the job hunting experience with a rebuilt UI in React, Vite, Tailwind CSS, and DaisyUI. Helps users manage and track job listings directly from the browser.",
+    image: "/projects/JOBLENS.png",
+    tags: ["React", "Vite", "Tailwind CSS", "DaisyUI", "Chrome Extension"],
+    demoUrl: "https://job-lens-landing-page.vercel.app/",
+    githubUrl: "https://github.com/AdeibArief/Joblens-extension",
+  },
 ];
 
 const ProjectSection = () => {

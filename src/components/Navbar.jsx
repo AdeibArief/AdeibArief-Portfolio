@@ -43,7 +43,7 @@ const Navbar = () => {
 
         {/* Desktop version */}
 
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex space-x-8 items-center">
           {navItems.map((item, key) => (
             <a
               key={key}
@@ -53,6 +53,13 @@ const Navbar = () => {
               {item.name}
             </a>
           ))}
+          <a
+            href="src\FSD_RESUME_6.pdf"
+            download="Resume.pdf"
+            className="px-4 py-2 bg-primary text-primary-foreground rounded hover:bg-primary/90 transition-colors duration-300 font-medium"
+          >
+            Resume
+          </a>
         </div>
 
         {/* Mobile Number */}

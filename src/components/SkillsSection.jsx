@@ -5,16 +5,20 @@ const skills = [
   // Frontend
   { name: "HTML & CSS", level: 90, category: "frontend" },
   { name: "JavaScript (ES6+)", level: 88, category: "frontend" },
-  { name: "React.js", level: 85, category: "frontend" },
+  { name: "React.js", level: 87, category: "frontend" },
+  { name: "TypeScript", level: 75, category: "frontend" },
   { name: "Tailwind CSS", level: 85, category: "frontend" },
+  { name: "Redux Toolkit", level: 75, category: "frontend" },
+  { name: "React Query", level: 75, category: "frontend" },
 
   // Backend
   { name: "Node.js", level: 80, category: "backend" },
   { name: "Express.js", level: 78, category: "backend" },
   { name: "MongoDB", level: 75, category: "backend" },
   { name: "PostgreSQL", level: 65, category: "backend" },
-  { name: "Authentication (JWT)", level: 75, category: "backend" },
-
+  { name: "Laravel (PHP)", level: 60, category: "backend" },
+  { name: "Authentication (JWT)", level: 80, category: "backend" },
+  
   // AI / Data
   { name: "Python", level: 80, category: "ai" },
   { name: "Machine Learning (Basics)", level: 70, category: "ai" },
